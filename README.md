@@ -2,7 +2,7 @@ A simple, front-end only (data resets on page refresh) doctor-patient messaging 
 
 #### Web
 
-www.google.com
+[https://doctor-chat.vercel.app](https://doctor-chat.vercel.app)
 
 #### Local
 
