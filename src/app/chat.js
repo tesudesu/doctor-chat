@@ -128,7 +128,7 @@ export default function Chat() {
         <container>
             <sidebar>
                 {threads.map((thread, threadIndex) => (
-                    <div key={threadIndex} onClick={() => handleChangeWindow(threadIndex)}>
+                    <div key={threadIndex} onClick={() => handleChangeWindow(threadIndex)} style={{ backgroundColor: windowIndex === threadIndex && "#c2e9da" }}>
                         <div>
                             {thread[thread.length - 1].message.length < 40 ? thread[thread.length - 1].message : thread[thread.length - 1].message.slice(0, thread[thread.length - 1].message.lastIndexOf(" ", 40)) + "..."}
                         </div>
@@ -137,7 +137,7 @@ export default function Chat() {
                         </div>
                     </div>
                 ))}
-                <button onClick={handleCreateNewThread}>New Thread</button>
+                <button onClick={handleCreateNewThread} style={{ backgroundColor: windowIndex === -1 && "#c2e9da" }}>New Thread</button>
             </sidebar>
 
             <mainbar>
@@ -145,7 +145,7 @@ export default function Chat() {
                     {windowIndex >= 0 && threads[windowIndex].map((convo, ind) => (
                         <div key={ind}>
                             {/* Only show a date if the previous date is over half an hour ago */}
-                            <div style={{ marginLeft: !convo.doctor && "auto" }} className="messagedate">{(ind === 0 || new Date(convo.time) - new Date(threads[windowIndex][ind - 1].time) >= 1800000) && DateTime.fromJSDate(new Date(convo.time)).toLocaleString(DateTime.DATETIME_SHORT)}</div> 
+                            <div style={{ marginLeft: !convo.doctor && "auto" }} className="messagedate">{(ind === 0 || new Date(convo.time) - new Date(threads[windowIndex][ind - 1].time) >= 1800000) && DateTime.fromJSDate(new Date(convo.time)).toLocaleString(DateTime.DATETIME_SHORT)}</div>
                             <div style={{ marginLeft: !convo.doctor && "auto", backgroundColor: !convo.doctor && "#E8EDFF" }} className="message"><span style={{ display: convo.doctor ? "inline" : "none", paddingRight: "10px" }} role="img" aria-label="doctor">🧑‍⚕️</span>{convo.message}</div>
                         </div>
                     ))}
